@@ -21,144 +21,415 @@
 html { scroll-behavior:smooth; }
 body {
   margin:0;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,
+    BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--paper);
   color:var(--ink);
 }
-#app { background:var(--paper); min-height:100vh; overflow:hidden; }
+#app {
+  background:var(--paper);
+  min-height:100vh;
+  border-radius:0;
+  overflow:hidden;
+}
 header {
-  position:sticky; top:0; z-index:10;
+  position:sticky;
+  top:0;
+  z-index:10;
   background:light-dark(rgba(255,255,255,.94),rgba(8,35,49,.94));
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
 }
 .nav {
-  max-width:1160px; margin:auto; padding:14px 24px;
-  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  max-width:1160px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
-.brand { display:flex; align-items:center; gap:10px; font-weight:850; color:var(--ink); }
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:850;
+  letter-spacing:-.03em;
+  color:var(--ink);
+}
 .logo {
-  width:42px; height:42px; display:grid; place-items:center;
-  border-radius:14px; color:#06344a;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#06344a;
   background:linear-gradient(145deg,var(--aqua),#d3fff4);
   font-size:23px;
+  box-shadow:0 6px 18px #0a9b9b25;
 }
-nav { display:flex; gap:22px; align-items:center; flex-wrap:wrap; }
-nav a { text-decoration:none; color:var(--muted); font-size:13px; font-weight:750; }
+nav {
+  display:flex;
+  gap:22px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+nav a {
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:750;
+}
 nav a:hover { color:var(--ocean); }
 .lang {
-  border:1px solid var(--line); background:transparent; color:var(--ink);
-  border-radius:999px; padding:8px 12px; font-weight:800; cursor:pointer;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:800;
+  cursor:pointer;
 }
 .hero {
-  position:relative; isolation:isolate; overflow:hidden;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
   background:linear-gradient(118deg,#062f49 0%,#075c76 53%,#0a9b9d 100%);
   color:#f4ffff;
 }
 .hero:before {
-  content:""; position:absolute; width:620px; height:620px;
-  border:1px solid #ffffff24; border-radius:50%;
-  right:-90px; top:-250px;
+  content:"";
+  position:absolute;
+  width:620px;
+  height:620px;
+  border:1px solid #ffffff24;
+  border-radius:50%;
+  right:-90px;
+  top:-250px;
   box-shadow:0 0 0 45px #ffffff09,0 0 0 95px #ffffff08,0 0 0 150px #ffffff06;
   z-index:-1;
 }
 .hero-inner {
-  max-width:1160px; margin:auto; padding:86px 24px 90px;
-  display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:44px;
+  max-width:1160px;
+  margin:auto;
+  padding:86px 24px 90px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  align-items:center;
+  gap:44px;
 }
 .eyebrow {
-  display:inline-flex; gap:8px; align-items:center; padding:8px 12px;
-  border:1px solid #c3fff34c; border-radius:999px; color:#c5fff3;
-  font-size:12px; font-weight:850; letter-spacing:.11em; text-transform:uppercase;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+  border:1px solid #c3fff34c;
+  border-radius:999px;
+  color:#c5fff3;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.11em;
+  text-transform:uppercase;
 }
-h1 { margin:20px 0 18px; font-size:clamp(42px,6.3vw,76px); line-height:.99; letter-spacing:-.065em; max-width:720px; }
+h1 {
+  margin:20px 0 18px;
+  font-size:clamp(42px,6.3vw,76px);
+  line-height:.99;
+  letter-spacing:-.065em;
+  max-width:720px;
+}
 h1 span { color:#8df1dd; }
-.hero p { color:#d2edf2; font-size:17px; line-height:1.75; max-width:610px; margin:0 0 26px; }
+.hero p {
+  color:#d2edf2;
+  font-size:17px;
+  line-height:1.75;
+  max-width:610px;
+  margin:0 0 26px;
+}
 .actions { display:flex; gap:12px; flex-wrap:wrap; }
 .btn {
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  border:0; border-radius:999px; padding:13px 18px; text-decoration:none;
-  font-weight:850; font-size:14px; cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:0;
+  border-radius:999px;
+  padding:13px 18px;
+  text-decoration:none;
+  font-weight:850;
+  font-size:14px;
+  cursor:pointer;
 }
 .btn-primary { background:#a6f5e4; color:#063b4c; }
-.btn-ghost { border:1px solid #c5f8f34d; color:white; background:#ffffff0b; }
-.ocean-art { min-height:330px; position:relative; display:grid; place-items:center; }
+.btn-ghost {
+  border:1px solid #c5f8f34d;
+  color:white;
+  background:#ffffff0b;
+}
+.ocean-art {
+  min-height:330px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
 .sun {
-  width:115px; height:115px; border-radius:50%;
+  width:115px;
+  height:115px;
+  border-radius:50%;
   background:linear-gradient(145deg,#fff2c4,#f9c977);
-  position:absolute; top:8px; right:56px; box-shadow:0 0 70px #ffdc9250;
+  position:absolute;
+  top:8px;
+  right:56px;
+  box-shadow:0 0 70px #ffdc9250;
 }
 .wave {
-  position:absolute; bottom:10px; width:min(100%,410px); height:210px;
+  position:absolute;
+  bottom:10px;
+  width:min(100%,410px);
+  height:210px;
   border-radius:48% 52% 0 0 / 32% 34% 0 0;
   background:linear-gradient(160deg,#65e1d0,#159db1);
-  transform:rotate(-4deg); box-shadow:inset 0 18px 0 #b2fff433;
+  transform:rotate(-4deg);
+  box-shadow:inset 0 18px 0 #b2fff433;
 }
 .wave:before,.wave:after {
-  content:""; position:absolute; width:100%; height:100%;
-  border-radius:inherit; border-top:3px solid #d5fff67c;
-  top:20px; left:-9px; transform:rotate(8deg);
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:inherit;
+  border-top:3px solid #d5fff67c;
+  top:20px;
+  left:-9px;
+  transform:rotate(8deg);
 }
-.wave:after { top:43px; left:14px; border-color:#ffffff40; transform:rotate(-5deg); }
-.turtle { position:absolute; z-index:2; font-size:132px; top:84px; left:calc(50% - 80px); filter:drop-shadow(0 14px 12px #003b4a45); transform:rotate(-9deg); }
-.bubble { position:absolute; z-index:3; border:2px solid #e4fff6b0; border-radius:50%; background:#d9fff32b; }
+.wave:after {
+  top:43px;
+  left:14px;
+  border-color:#ffffff40;
+  transform:rotate(-5deg);
+}
+.turtle {
+  position:absolute;
+  z-index:2;
+  font-size:132px;
+  top:84px;
+  left:calc(50% - 80px);
+  filter:drop-shadow(0 14px 12px #003b4a45);
+  transform:rotate(-9deg);
+}
+.bubble {
+  position:absolute;
+  z-index:3;
+  border:2px solid #e4fff6b0;
+  border-radius:50%;
+  background:#d9fff32b;
+}
 .b1 { width:18px;height:18px;left:35px;top:90px; }
 .b2 { width:11px;height:11px;right:42px;top:145px; }
 .b3 { width:24px;height:24px;right:75px;bottom:45px; }
 .stats {
-  max-width:1060px; margin:-30px auto 0; position:relative; z-index:2;
-  padding:0 24px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+  max-width:1060px;
+  margin:-30px auto 0;
+  position:relative;
+  z-index:2;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
-.stat { padding:22px 24px; background:var(--paper); border:1px solid var(--line); border-radius:18px; }
-.stat strong { display:block; font-size:16px; margin-bottom:5px; }
-.stat span { color:var(--muted); font-size:13px; line-height:1.5; }
-section.content { max-width:1160px; margin:auto; padding:76px 24px; }
-.section-kicker { color:var(--ocean); text-transform:uppercase; letter-spacing:.13em; font-size:11px; font-weight:900; }
-h2 { font-size:clamp(30px,4vw,45px); line-height:1.08; letter-spacing:-.05em; margin:12px 0 14px; }
-.intro { max-width:680px; color:var(--muted); line-height:1.75; margin:0; }
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:32px; }
-.outcomes { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:32px; }
+.stat {
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 12px 35px #052d3c0d;
+}
+.stat strong {
+  display:block;
+  font-size:16px;
+  letter-spacing:-.02em;
+  margin-bottom:5px;
+}
+.stat span {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+section.content {
+  max-width:1160px;
+  margin:auto;
+  padding:76px 24px;
+}
+.section-kicker {
+  color:var(--ocean);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-size:11px;
+  font-weight:900;
+}
+h2 {
+  font-size:clamp(30px,4vw,45px);
+  line-height:1.08;
+  letter-spacing:-.05em;
+  margin:12px 0 14px;
+}
+.intro {
+  max-width:680px;
+  color:var(--muted);
+  line-height:1.75;
+  margin:0;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:32px;
+}
+.outcomes {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:32px;
+}
 .outcome {
-  display:flex; gap:16px; align-items:flex-start;
-  border:1px solid var(--line); background:var(--paper); border-radius:20px; padding:24px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:20px;
+  padding:24px;
 }
 .outcome-icon {
-  flex:none; width:50px; height:50px; display:grid; place-items:center;
-  border-radius:16px; background:light-dark(#e4faf4,#173e4a); font-size:25px;
+  flex:none;
+  width:50px;
+  height:50px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:light-dark(#e4faf4,#173e4a);
+  font-size:25px;
 }
 .outcome h3 { margin:0 0 8px; font-size:18px; }
-.outcome p { margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
-.card { border:1px solid var(--line); background:var(--paper); border-radius:20px; padding:24px; min-height:205px; transition:transform .2s,border-color .2s; }
-.card:hover { transform:translateY(-4px); border-color:#62cfc4; }
-.card-icon { width:48px;height:48px;display:grid;place-items:center;background:light-dark(#e4faf4,#173e4a);border-radius:15px;font-size:24px;margin-bottom:19px; }
-.card h3 { margin:0 0 9px; font-size:18px; }
-.card p { margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
-.mission { background:light-dark(#eef9f7,#0b3542); border-block:1px solid var(--line); }
-.mission-inner {
-  max-width:1160px; margin:auto; padding:70px 24px;
-  display:grid; grid-template-columns:.9fr 1.1fr; gap:50px; align-items:center;
+.outcome p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
 }
-.quote { font-size:clamp(27px,4vw,43px); line-height:1.17; letter-spacing:-.045em; font-weight:850; }
+.card {
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:20px;
+  padding:24px;
+  min-height:205px;
+  transition:transform .2s,border-color .2s;
+}
+.card:hover { transform:translateY(-4px); border-color:#62cfc4; }
+.card-icon {
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  background:light-dark(#e4faf4,#173e4a);
+  border-radius:15px;
+  font-size:24px;
+  margin-bottom:19px;
+}
+.card h3 {
+  margin:0 0 9px;
+  font-size:18px;
+  letter-spacing:-.025em;
+}
+.card p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
+.mission {
+  background:light-dark(#eef9f7,#0b3542);
+  border-block:1px solid var(--line);
+}
+.mission-inner {
+  max-width:1160px;
+  margin:auto;
+  padding:70px 24px;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:50px;
+  align-items:center;
+}
+.quote {
+  font-size:clamp(27px,4vw,43px);
+  line-height:1.17;
+  letter-spacing:-.045em;
+  font-weight:850;
+}
 .quote em { color:var(--ocean); font-style:normal; }
 .steps { display:grid; gap:16px; }
 .step { display:flex; gap:15px; align-items:flex-start; }
-.num { flex:none; width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#0b8794;color:white;font-weight:900; }
+.num {
+  flex:none;
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#0b8794;
+  color:white;
+  font-weight:900;
+}
 .step h3 { margin:2px 0 5px; font-size:16px; }
-.step p { margin:0; color:var(--muted); line-height:1.6; font-size:14px; }
+.step p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
 .participate {
-  background:linear-gradient(120deg,#07374e,#087e8b); color:white;
-  border-radius:28px; padding:38px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  background:linear-gradient(120deg,#07374e,#087e8b);
+  color:white;
+  border-radius:28px;
+  padding:38px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
 }
 .participate h2 { margin:0 0 10px; }
-.participate p { color:#d0edf0; margin:0; max-width:650px; line-height:1.7; }
-footer { border-top:1px solid var(--line); padding:25px 24px; color:var(--muted); font-size:12px; }
-.foot-inner { max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap; }
+.participate p {
+  color:#d0edf0;
+  margin:0;
+  max-width:650px;
+  line-height:1.7;
+}
+footer {
+  border-top:1px solid var(--line);
+  padding:25px 24px;
+  color:var(--muted);
+  font-size:12px;
+}
+.foot-inner {
+  max-width:1160px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
 body.tr [data-en] { display:none; }
 body:not(.tr) [data-tr] { display:none; }
+
 @media(max-width:760px) {
   nav { gap:12px; }
   nav a { display:none; }
-  .hero-inner { grid-template-columns:1fr; padding-top:60px; gap:12px; }
+  .hero-inner {
+    grid-template-columns:1fr;
+    padding-top:60px;
+    gap:12px;
+  }
   .ocean-art { min-height:270px; }
   .sun { right:calc(50% - 120px); }
   .turtle { top:70px; }
@@ -166,12 +437,17 @@ body:not(.tr) [data-tr] { display:none; }
   .stat { padding:17px 20px; }
   .grid,.outcomes { grid-template-columns:1fr; }
   .mission-inner { grid-template-columns:1fr; gap:28px; }
-  .participate { flex-direction:column; align-items:flex-start; padding:28px; }
+  .participate {
+    flex-direction:column;
+    align-items:flex-start;
+    padding:28px;
+  }
 }
 </style>
 </head>
 <body>
 <div id="app">
+
 <header>
   <div class="nav">
     <div class="brand">
@@ -199,14 +475,18 @@ body:not(.tr) [data-tr] { display:none; }
         <span data-en>An eTwinning collaboration</span>
         <span data-tr>Bir eTwinning iş birliği</span>
       </div>
+
       <h1 data-en>From local waters<br>to <span>shared seas.</span></h1>
       <h1 data-tr>Yerel sulardan<br><span>ortak denizlere.</span></h1>
+
       <p data-en>We are young Blue Guardians! Together, we explore the waters around us, discover why they matter, and turn small everyday actions into a wave of positive change.</p>
       <p data-tr>Biz genç Mavi Koruyucularız! Çevremizdeki suları keşfediyor, neden önemli olduklarını öğreniyor ve günlük küçük adımlarla büyük bir değişimin parçası oluyoruz.</p>
+
       <div class="actions">
         <a class="btn btn-primary" href="#about">
           <span data-en>Discover our mission</span>
-          <span data-tr>Misyonumuzu keşfet</span> ↘
+          <span data-tr>Misyonumuzu keşfet</span>
+          <span>↘</span>
         </a>
         <a class="btn btn-ghost" href="#focus">
           <span data-en>Explore the blue world</span>
@@ -214,6 +494,7 @@ body:not(.tr) [data-tr] { display:none; }
         </a>
       </div>
     </div>
+
     <div class="ocean-art" aria-label="Illustration of a sea turtle in the ocean">
       <div class="sun"></div>
       <div class="wave"></div>
@@ -246,43 +527,124 @@ body:not(.tr) [data-tr] { display:none; }
 <section class="content" id="about">
   <div class="section-kicker" data-en>Why Blue Guardians?</div>
   <div class="section-kicker" data-tr>Neden Mavi Koruyucular?</div>
+
   <h2 data-en>Big curiosity. Small actions.<br>A bluer future.</h2>
   <h2 data-tr>Büyük merak. Küçük adımlar.<br>Daha mavi bir gelecek.</h2>
+
   <p class="intro" data-en>Blue Guardians is an international eTwinning project bringing together primary school students from Türkiye, Italy, Romania and North Macedonia. Students explore local rivers, lakes, wetlands, coastal areas and seas; investigate water quality and human impact; exchange findings with European peers; and work together to create solutions that protect aquatic ecosystems. Through science, English, digital tools and creative activities, they become active Blue Guardians for a cleaner, healthier water future.</p>
+
   <p class="intro" data-tr>Blue Guardians, Türkiye, İtalya, Romanya ve Kuzey Makedonya'dan ilkokul öğrencilerini bir araya getiren uluslararası bir eTwinning projesidir. Öğrenciler yerel nehirleri, gölleri, sulak alanları, kıyı bölgelerini ve denizleri keşfeder; su kalitesini ve insan etkisini araştırır; bulgularını Avrupalı akranlarıyla paylaşır ve su ekosistemlerini korumak için birlikte çözümler geliştirir. Bilim, İngilizce, dijital araçlar ve yaratıcı etkinlikler sayesinde daha temiz ve sağlıklı bir su geleceği için aktif Mavi Koruyucular olurlar.</p>
+
   <div class="grid">
     <article class="card">
       <div class="card-icon">🔎</div>
-      <h3 data-en>Discover</h3><h3 data-tr>Keşfet</h3>
+      <h3 data-en>Discover</h3>
+      <h3 data-tr>Keşfet</h3>
       <p data-en>Observe the water around us and ask thoughtful questions about its journey and life.</p>
       <p data-tr>Çevremizdeki suları gözlemleyelim; suyun yolculuğu ve canlı yaşamı hakkında sorular soralım.</p>
     </article>
+
     <article class="card">
       <div class="card-icon">🧪</div>
-      <h3 data-en>Investigate</h3><h3 data-tr>Araştır</h3>
+      <h3 data-en>Investigate</h3>
+      <h3 data-tr>Araştır</h3>
       <p data-en>Explore water use, pollution prevention and biodiversity through age-friendly activities.</p>
       <p data-tr>Yaşımıza uygun etkinliklerle su kullanımını, kirliliğin önlenmesini ve biyolojik çeşitliliği araştıralım.</p>
     </article>
+
     <article class="card">
       <div class="card-icon">🌱</div>
-      <h3 data-en>Make a difference</h3><h3 data-tr>Fark yarat</h3>
+      <h3 data-en>Make a difference</h3>
+      <h3 data-tr>Fark yarat</h3>
       <p data-en>Turn what we learn into simple habits and creative messages that inspire others.</p>
       <p data-tr>Öğrendiklerimizi günlük alışkanlıklara ve başkalarına ilham veren yaratıcı mesajlara dönüştürelim.</p>
     </article>
   </div>
 </section>
 
-<!-- PROJECT POSTER -->
 <section class="content" id="poster">
   <div class="section-kicker" data-en>Project poster</div>
   <div class="section-kicker" data-tr>Proje afişimiz</div>
   <h2 data-en>Meet our project</h2>
   <h2 data-tr>Projemizi tanıyın</h2>
+
   <img
     src="https://raw.githubusercontent.com/blueguardiansproject/blue-guardians/main/WhatsApp%20Image%202026-09-29%20at%2020.39.53.jpeg"
-    alt="European Blue Guardians proje afişi"
+    alt="European Blue Guardians project poster"
     style="display:block;width:100%;max-width:900px;height:auto;margin:24px auto;border-radius:16px;"
   >
+</section>
+
+<section class="content" id="partners">
+  <div class="section-kicker" data-en>Our partner schools</div>
+  <div class="section-kicker" data-tr>Ortak okullarımız</div>
+
+  <h2 data-en>Four countries, one blue mission</h2>
+  <h2 data-tr>Dört ülke, tek bir mavi misyon</h2>
+
+  <p class="intro" data-en>Meet the schools and educators working together to protect water and inspire young Blue Guardians.</p>
+  <p class="intro" data-tr>Suları korumak ve genç Mavi Koruyuculara ilham vermek için birlikte çalışan okullarımızı ve eğitimcilerimizi tanıyın.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="card-icon">🇹🇷</div>
+      <h3>🇹🇷 Türkiye</h3>
+
+      <p>
+        <strong>Şehit Ragıp Köse Primary School</strong><br>
+        Silifke / Mersin
+      </p>
+      <p style="margin-top:12px">
+        <strong>Ayşe Şifa Balcı</strong>
+      </p>
+
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+
+      <p>
+        <strong>Şehit Halim Altay İlkokulu</strong><br>
+        Çandır / Yozgat
+      </p>
+      <p style="margin-top:12px">
+        <strong>Mevlüt Güner Özkan</strong><br>
+        <strong>Alper Şahin</strong><br>
+        <strong>Büşra Yıldırım</strong><br>
+        <strong>Mahmut Ceylan</strong>
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🇲🇰</div>
+      <h3>🇲🇰 North Macedonia</h3>
+      <p><strong>OOU “Sv. Kliment Ohridski”</strong></p>
+      <p style="margin-top:12px">
+        <strong>Tatjana Karanfilovska</strong><br>
+        <strong>Simona Gjorgjievska</strong>
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🇷🇴</div>
+      <h3>🇷🇴 România / Romania</h3>
+      <p><strong>Școala Gimnazială Nr. 11 Botoșani</strong></p>
+      <p style="margin-top:12px">
+        <strong>Zvetlana Gîndu</strong><br>
+        <span style="overflow-wrap:anywhere">zvetlanagindu@yahoo.com</span>
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🇮🇹</div>
+      <h3>🇮🇹 Italy</h3>
+      <p>
+        <strong>Falcone e Borsellino Comprehensive School</strong><br>
+        Province of Milan
+      </p>
+      <p style="margin-top:12px">
+        <strong>Marilù Federico</strong> — Principal<br>
+        <strong>Elena</strong> and <strong>Mirko</strong> — Teachers
+      </p>
+    </article>
+  </div>
 </section>
 
 <div class="mission" id="focus">
@@ -290,32 +652,40 @@ body:not(.tr) [data-tr] { display:none; }
     <div>
       <div class="section-kicker" data-en>Our blue promise</div>
       <div class="section-kicker" data-tr>Mavi sözümüz</div>
+
       <div class="quote" data-en>“The water we protect today is the <em>future we share</em> tomorrow.”</div>
       <div class="quote" data-tr>“Bugün koruduğumuz sular, yarın paylaşacağımız <em>gelecektir.</em>”</div>
+
       <p class="intro" style="margin-top:18px" data-en>Every student can be part of the solution. Our voices, choices and teamwork can help protect the blue planet.</p>
       <p class="intro" style="margin-top:18px" data-tr>Her öğrenci çözümün bir parçası olabilir. Sesimiz, seçimlerimiz ve takım çalışmamız mavi gezegeni korumaya katkı sağlar.</p>
     </div>
+
     <div class="steps">
       <div class="step">
         <div class="num">01</div>
         <div>
-          <h3 data-en>Water awareness</h3><h3 data-tr>Su farkındalığı</h3>
+          <h3 data-en>Water awareness</h3>
+          <h3 data-tr>Su farkındalığı</h3>
           <p data-en>Notice where water comes from, where it goes and why every drop counts.</p>
           <p data-tr>Suyun nereden geldiğini, nereye gittiğini ve her damlanın neden önemli olduğunu fark et.</p>
         </div>
       </div>
+
       <div class="step">
         <div class="num">02</div>
         <div>
-          <h3 data-en>Healthy ecosystems</h3><h3 data-tr>Sağlıklı ekosistemler</h3>
+          <h3 data-en>Healthy ecosystems</h3>
+          <h3 data-tr>Sağlıklı ekosistemler</h3>
           <p data-en>Respect aquatic life and learn how litter and pollution affect habitats.</p>
           <p data-tr>Su canlılarına saygı duymayı ve atıkların yaşam alanlarını nasıl etkilediğini öğren.</p>
         </div>
       </div>
+
       <div class="step">
         <div class="num">03</div>
         <div>
-          <h3 data-en>European teamwork</h3><h3 data-tr>Avrupa iş birliği</h3>
+          <h3 data-en>European teamwork</h3>
+          <h3 data-tr>Avrupa iş birliği</h3>
           <p data-en>Exchange ideas with partner schools and celebrate what we achieve together.</p>
           <p data-tr>Ortak okullarla fikir alışverişi yap ve birlikte başardıklarımızı kutla.</p>
         </div>
@@ -327,17 +697,73 @@ body:not(.tr) [data-tr] { display:none; }
 <section class="content" id="outcomes">
   <div class="section-kicker" data-en>Expected outcomes</div>
   <div class="section-kicker" data-tr>Beklenen sonuçlar</div>
+
   <h2 data-en>From discoveries to shared creations</h2>
   <h2 data-tr>Keşiflerden ortak ürünlere</h2>
+
   <p class="intro" data-en>We will turn our learning into shared European creations and local action for healthier waters.</p>
   <p class="intro" data-tr>Öğrendiklerimizi ortak Avrupa ürünlerine ve daha sağlıklı sular için yerel eylemlere dönüştüreceğiz.</p>
+
   <div class="outcomes">
-    <article class="outcome"><div class="outcome-icon">🗺️</div><div><h3 data-en>European Blue Water Map</h3><h3 data-tr>Avrupa Mavi Su Haritası</h3><p data-en>A collaborative map introducing the local waters explored by partner schools.</p><p data-tr>Ortak okulların keşfettiği yerel suları tanıtan iş birliğine dayalı bir harita.</p></div></article>
-    <article class="outcome"><div class="outcome-icon">💧</div><div><h3 data-en>Collaborative Water Report</h3><h3 data-tr>İş Birlikçi Su Raporu</h3><p data-en>Students bring together their observations and findings about water quality and human impact.</p><p data-tr>Öğrenciler su kalitesi ve insan etkisiyle ilgili gözlem ve bulgularını bir araya getirir.</p></div></article>
-    <article class="outcome"><div class="outcome-icon">📖</div><div><h3 data-en>Digital Story</h3><h3 data-tr>Dijital Hikâye</h3><p data-en>A creative story sharing what water means to us and how we can protect it.</p><p data-tr>Suyun bizim için ne ifade ettiğini ve onu nasıl koruyabileceğimizi anlatan yaratıcı bir hikâye.</p></div></article>
-    <article class="outcome"><div class="outcome-icon">📚</div><div><h3 data-en>Blue Guardians Book</h3><h3 data-tr>Mavi Koruyucular Kitabı</h3><p data-en>A shared book celebrating students' ideas, learning and blue actions.</p><p data-tr>Öğrencilerin fikirlerini, öğrendiklerini ve mavi eylemlerini bir araya getiren ortak bir kitap.</p></div></article>
-    <article class="outcome"><div class="outcome-icon">🧠</div><div><h3 data-en>Skills for the future</h3><h3 data-tr>Geleceğin becerileri</h3><p data-en>Build scientific, digital, communication and teamwork skills through meaningful activities.</p><p data-tr>Anlamlı etkinliklerle bilimsel, dijital, iletişim ve ekip çalışması becerilerini geliştirmek.</p></div></article>
-    <article class="outcome"><div class="outcome-icon">🌱</div><div><h3 data-en>Local Blue Actions</h3><h3 data-tr>Yerel Mavi Eylemler</h3><p data-en>Take practical steps in our communities to help protect water ecosystems.</p><p data-tr>Su ekosistemlerini korumak için yaşadığımız çevrede uygulanabilir adımlar atmak.</p></div></article>
+    <article class="outcome">
+      <div class="outcome-icon">🗺️</div>
+      <div>
+        <h3 data-en>European Blue Water Map</h3>
+        <h3 data-tr>Avrupa Mavi Su Haritası</h3>
+        <p data-en>A collaborative map introducing the local waters explored by partner schools.</p>
+        <p data-tr>Ortak okulların keşfettiği yerel suları tanıtan iş birliğine dayalı bir harita.</p>
+      </div>
+    </article>
+
+    <article class="outcome">
+      <div class="outcome-icon">💧</div>
+      <div>
+        <h3 data-en>Collaborative Water Report</h3>
+        <h3 data-tr>İş Birlikçi Su Raporu</h3>
+        <p data-en>Students bring together their observations and findings about water quality and human impact.</p>
+        <p data-tr>Öğrenciler su kalitesi ve insan etkisiyle ilgili gözlem ve bulgularını bir araya getirir.</p>
+      </div>
+    </article>
+
+    <article class="outcome">
+      <div class="outcome-icon">📖</div>
+      <div>
+        <h3 data-en>Digital Story</h3>
+        <h3 data-tr>Dijital Hikâye</h3>
+        <p data-en>A creative story sharing what water means to us and how we can protect it.</p>
+        <p data-tr>Suyun bizim için ne ifade ettiğini ve onu nasıl koruyabileceğimizi anlatan yaratıcı bir hikâye.</p>
+      </div>
+    </article>
+
+    <article class="outcome">
+      <div class="outcome-icon">📚</div>
+      <div>
+        <h3 data-en>Blue Guardians Book</h3>
+        <h3 data-tr>Mavi Koruyucular Kitabı</h3>
+        <p data-en>A shared book celebrating students' ideas, learning and blue actions.</p>
+        <p data-tr>Öğrencilerin fikirlerini, öğrendiklerini ve mavi eylemlerini bir araya getiren ortak bir kitap.</p>
+      </div>
+    </article>
+
+    <article class="outcome">
+      <div class="outcome-icon">🧠</div>
+      <div>
+        <h3 data-en>Skills for the future</h3>
+        <h3 data-tr>Geleceğin becerileri</h3>
+        <p data-en>Build scientific, digital, communication and teamwork skills through meaningful activities.</p>
+        <p data-tr>Anlamlı etkinliklerle bilimsel, dijital, iletişim ve ekip çalışması becerilerini geliştirmek.</p>
+      </div>
+    </article>
+
+    <article class="outcome">
+      <div class="outcome-icon">🌱</div>
+      <div>
+        <h3 data-en>Local Blue Actions</h3>
+        <h3 data-tr>Yerel Mavi Eylemler</h3>
+        <p data-en>Take practical steps in our communities to help protect water ecosystems.</p>
+        <p data-tr>Su ekosistemlerini korumak için yaşadığımız çevrede uygulanabilir adımlar atmak.</p>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -346,13 +772,17 @@ body:not(.tr) [data-tr] { display:none; }
     <div>
       <div class="section-kicker" style="color:#a8f7e8" data-en>Our journey starts here</div>
       <div class="section-kicker" style="color:#a8f7e8" data-tr>Yolculuğumuz burada başlıyor</div>
+
       <h2 data-en>Be curious. Be kind.<br>Be a Blue Guardian.</h2>
       <h2 data-tr>Merak et. İyi bak.<br>Mavi Koruyucu ol.</h2>
+
       <p data-en>This page will grow with our project! We will add student creations, water discoveries, partner-school activities and moments from our shared journey.</p>
       <p data-tr>Bu sayfa projemizle birlikte büyüyecek! Öğrenci çalışmalarını, suyla ilgili keşiflerimizi, ortak okulların etkinliklerini ve yolculuğumuzdan anları burada paylaşacağız.</p>
     </div>
+
     <a class="btn btn-primary" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-      <span data-en>Back to top ↑</span><span data-tr>Başa dön ↑</span>
+      <span data-en>Back to top ↑</span>
+      <span data-tr>Başa dön ↑</span>
     </a>
   </div>
 </section>
@@ -369,10 +799,13 @@ body:not(.tr) [data-tr] { display:none; }
 
 <script>
 const toggle = document.getElementById('langToggle');
+
 toggle.addEventListener('click', () => {
   document.body.classList.toggle('tr');
+
   document.documentElement.lang =
     document.body.classList.contains('tr') ? 'tr' : 'en';
+
   toggle.setAttribute(
     'aria-pressed',
     document.body.classList.contains('tr') ? 'true' : 'false'
