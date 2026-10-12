@@ -615,10 +615,10 @@ body:not(.tr) [data-tr] { display:none; }
         Çandır / Yozgat
       </p>
       <p style="margin-top:12px">
-        <strong>Mevlüt Güner Özkan</strong><br>
-        <strong>Alper Şahin</strong><br>
-        <strong>Büşra Yıldırım</strong><br>
-        <strong>Mahmut Ceylan</strong>
+        <strong>Mevlüt Güner Özkan</strong> — Principal<br>
+        <strong>Alper Şahin</strong> — Teachers<br>
+        <strong>Büşra Yıldırım</strong> — Teachers<br>
+        <strong>Mahmut Ceylan</strong> — Teachers
       </p>
     </article>
 
