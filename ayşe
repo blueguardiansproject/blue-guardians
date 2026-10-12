@@ -600,6 +600,16 @@ body:not(.tr) [data-tr] { display:none; }
 
       <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
 
+  <p>
+        <strong>Yeniköy Denizdibi Primary School</strong><br>
+        Başiskele / Kocaeli
+      </p>
+      <p style="margin-top:12px">
+        <strong>Asuman GEDİK TANRIVERDİ</strong>
+      </p>
+
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+
       <p>
         <strong>Şehit Halim Altay İlkokulu</strong><br>
         Çandır / Yozgat
