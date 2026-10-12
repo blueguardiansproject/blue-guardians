@@ -327,6 +327,12 @@ h2 {
   transition:transform .2s,border-color .2s;
 }
 .card:hover { transform:translateY(-4px); border-color:#62cfc4; }
+.learning-card { cursor:pointer; }
+.learning-card:focus-visible { outline:3px solid #0b8794; outline-offset:3px; }
+.card-hint { margin-top:14px !important; color:var(--ocean) !important; font-size:12px !important; font-weight:800; }
+.card-detail { margin-top:14px; padding-top:12px; border-top:1px solid var(--line); }
+.card-detail[hidden] { display:none !important; }
+.learning-card.is-open { border-color:#62cfc4; background:light-dark(#f7fffd,#123946); }
 .card-icon {
   width:48px;
   height:48px;
@@ -536,28 +542,34 @@ body:not(.tr) [data-tr] { display:none; }
   <p class="intro" data-tr>Blue Guardians, Türkiye, İtalya, Romanya ve Kuzey Makedonya'dan ilkokul öğrencilerini bir araya getiren uluslararası bir eTwinning projesidir. Öğrenciler yerel nehirleri, gölleri, sulak alanları, kıyı bölgelerini ve denizleri keşfeder; su kalitesini ve insan etkisini araştırır; bulgularını Avrupalı akranlarıyla paylaşır ve su ekosistemlerini korumak için birlikte çözümler geliştirir. Bilim, İngilizce, dijital araçlar ve yaratıcı etkinlikler sayesinde daha temiz ve sağlıklı bir su geleceği için aktif Mavi Koruyucular olurlar.</p>
 
   <div class="grid">
-    <article class="card">
+    <article class="card learning-card" tabindex="0" role="button" aria-expanded="false" aria-label="Discover / Keşfet ayrıntılarını aç">
       <div class="card-icon">🔎</div>
       <h3 data-en>Discover</h3>
       <h3 data-tr>Keşfet</h3>
       <p data-en>Observe the water around us and ask thoughtful questions about its journey and life.</p>
       <p data-tr>Çevremizdeki suları gözlemleyelim; suyun yolculuğu ve canlı yaşamı hakkında sorular soralım.</p>
+      <div class="card-detail" hidden><p data-en><strong>Try it:</strong> Find a nearby river, lake, stream or water source. Draw it and write three questions about it.</p><p data-tr><strong>Deneyelim:</strong> Yakınımızdaki bir akarsu, göl, dere veya su kaynağını bulun. Resmini çizip onun hakkında üç soru yazın.</p></div>
+      <p class="card-hint" data-en>Click to explore ↓</p><p class="card-hint" data-tr>Ayrıntılar için tıklayın ↓</p>
     </article>
 
-    <article class="card">
+    <article class="card learning-card" tabindex="0" role="button" aria-expanded="false" aria-label="Investigate / Araştır ayrıntılarını aç">
       <div class="card-icon">🧪</div>
       <h3 data-en>Investigate</h3>
       <h3 data-tr>Araştır</h3>
       <p data-en>Explore water use, pollution prevention and biodiversity through age-friendly activities.</p>
       <p data-tr>Yaşımıza uygun etkinliklerle su kullanımını, kirliliğin önlenmesini ve biyolojik çeşitliliği araştıralım.</p>
+      <div class="card-detail" hidden><p data-en><strong>Try it:</strong> Observe how your school uses water. Record ways to save water and identify actions that prevent pollution.</p><p data-tr><strong>Deneyelim:</strong> Okulunuzda suyun nasıl kullanıldığını gözlemleyin. Su tasarrufu yollarını yazın ve kirliliği önleyecek davranışları belirleyin.</p></div>
+      <p class="card-hint" data-en>Click to explore ↓</p><p class="card-hint" data-tr>Ayrıntılar için tıklayın ↓</p>
     </article>
 
-    <article class="card">
+    <article class="card learning-card" tabindex="0" role="button" aria-expanded="false" aria-label="Make a difference / Fark yarat ayrıntılarını aç">
       <div class="card-icon">🌱</div>
       <h3 data-en>Make a difference</h3>
       <h3 data-tr>Fark yarat</h3>
       <p data-en>Turn what we learn into simple habits and creative messages that inspire others.</p>
       <p data-tr>Öğrendiklerimizi günlük alışkanlıklara ve başkalarına ilham veren yaratıcı mesajlara dönüştürelim.</p>
+      <div class="card-detail" hidden><p data-en><strong>Try it:</strong> Choose one water-friendly action for this week. Make a poster or share a short message encouraging others to join.</p><p data-tr><strong>Deneyelim:</strong> Bu hafta suyu korumak için bir davranış seçin. Başkalarını da katılmaya çağıran bir afiş veya kısa mesaj hazırlayın.</p></div>
+      <p class="card-hint" data-en>Click to explore ↓</p><p class="card-hint" data-tr>Ayrıntılar için tıklayın ↓</p>
     </article>
   </div>
 </section>
@@ -595,7 +607,9 @@ body:not(.tr) [data-tr] { display:none; }
         Silifke / Mersin
       </p>
       <p style="margin-top:12px">
-        <strong>Ayşe Şifa Balcı</strong>
+        <strong>Ayşe Şifa Balcı</strong><br>
+         <strong>Bülent Yapar</strong><br>
+         <strong>Sonay Hatap Gültekin</strong>
       </p>
 
       <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
@@ -605,7 +619,7 @@ body:not(.tr) [data-tr] { display:none; }
         Başiskele / Kocaeli
       </p>
       <p style="margin-top:12px">
-        <strong>Asuman GEDİK TANRIVERDİ</strong>
+        <strong>Asuman Gedik Tanrıverdi</strong>
       </p>
 
       <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
@@ -820,6 +834,22 @@ toggle.addEventListener('click', () => {
     'aria-pressed',
     document.body.classList.contains('tr') ? 'true' : 'false'
   );
+});
+
+document.querySelectorAll('.learning-card').forEach((card) => {
+  const toggleCard = () => {
+    const isOpen = card.classList.toggle('is-open');
+    card.setAttribute('aria-expanded', String(isOpen));
+    const detail = card.querySelector('.card-detail');
+    if (detail) detail.hidden = !isOpen;
+  };
+  card.addEventListener('click', toggleCard);
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleCard();
+    }
+  });
 });
 </script>
 </body>
